@@ -254,6 +254,7 @@ CloudCafe/
 # 📸 Screenshots
 # Server 1:
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/61aeaa94-b547-4b6b-8afe-824ef9dabb52" />
+
 # Server 2:
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f0c8eb62-69be-4ec0-b3a9-a90702f515b8" />
 
