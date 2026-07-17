@@ -1,4 +1,4 @@
-# ☕ Cloud Café – High Availability Web Application on AWS
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0ccd103d-2408-423f-8a33-9d2a066a810e" /># ☕ Cloud Café – High Availability Web Application on AWS
 
 ## 📌 Project Overview
 
@@ -253,14 +253,14 @@ CloudCafe/
 
 # 📸 Screenshots
 # Server 1:
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c31f99f9-4525-4f2e-885f-42c704b5bd7e" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/61aeaa94-b547-4b6b-8afe-824ef9dabb52" />
 # Server 2:
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/00220416-d96f-479f-be11-80957d4e37e4" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f0c8eb62-69be-4ec0-b3a9-a90702f515b8" />
+
 # Web Page:
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3faf23c4-81fc-485e-aa5b-bd14644e6400" />
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ea21bb6d-73a7-4330-8c23-148f34835433" />
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/fc2d04c0-d652-4d4f-9d67-b56948fc9200" />
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/326a9e28-021a-41d9-aa51-598b507cd29f" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8f9dcdbb-dc6a-4b38-8f0b-1a5b16ee5c28" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e266d444-37e0-432a-b7dc-6f64dfc5c7fa" />
+
 
 ---
 
