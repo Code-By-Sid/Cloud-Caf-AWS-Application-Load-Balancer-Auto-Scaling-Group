@@ -251,18 +251,16 @@ CloudCafe/
 
 ---
 
-# 📸 Suggested Screenshots
-
-* EC2 Instances
-* Launch Template
-* Auto Scaling Group
-* Target Group
-* Healthy Targets
-* Application Load Balancer
-* ALB DNS Output
-* Auto Scaling Activity
-* Instance Replacement
-* Scale-Out Event
+# 📸 Screenshots
+# Server 1:
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c31f99f9-4525-4f2e-885f-42c704b5bd7e" />
+# Server 2:
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/00220416-d96f-479f-be11-80957d4e37e4" />
+# Web Page:
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3faf23c4-81fc-485e-aa5b-bd14644e6400" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ea21bb6d-73a7-4330-8c23-148f34835433" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/fc2d04c0-d652-4d4f-9d67-b56948fc9200" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/326a9e28-021a-41d9-aa51-598b507cd29f" />
 
 ---
 
