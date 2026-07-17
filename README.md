@@ -239,6 +239,8 @@ CloudCafe/
 │
 ├── README.md
 ├── launch-template-user-data.sh
+├── webpage/
+│   ├── index.html
 ├── screenshots/
 │   ├── ec2-running.png
 │   ├── alb.png
