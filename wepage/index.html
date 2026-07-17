@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloud Café — Live Instance Demo</title>
+<style>
+:root{--espresso:#2B1B14;--espresso-deep:#1C110C;--cream:#F5EDE0;--latte:#D9BFA0;--copper:#C1683A;--copper-b:#DE7C4A;--gold:#D4A857;--paper:#FBF6EC;--ink:#2B1B14;--f-display:Georgia,'Iowan Old Style','Palatino Linotype',serif;--f-body:-apple-system,'Segoe UI',Roboto,Arial,sans-serif;--f-mono:ui-monospace,'SFMono-Regular','Consolas','Liberation Mono',monospace;}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--espresso);color:var(--cream);font-family:var(--f-body);overflow-x:hidden}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+header.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 36px;background:linear-gradient(180deg,rgba(28,17,12,.92),transparent)}
+.logo{display:flex;align-items:center;gap:9px;font-family:var(--f-display);font-weight:700;font-size:1.25rem}
+.logo svg{width:26px;height:26px}
+.nav-badge{font-family:var(--f-mono);font-size:.66rem;background:rgba(212,168,87,.14);border:1px solid rgba(212,168,87,.4);color:var(--gold);padding:6px 12px;border-radius:20px;display:flex;align-items:center;gap:7px;max-width:min(50vw,280px)}
+.nav-badge span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite;flex:none}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(212,168,87,.55)}70%{box-shadow:0 0 0 8px rgba(212,168,87,0)}100%{box-shadow:0 0 0 0 rgba(212,168,87,0)}}
+.hero{min-height:100vh;display:flex;align-items:center;padding:130px 0 70px;background:radial-gradient(ellipse 900px 500px at 15% 15%,rgba(193,104,58,.22),transparent 60%),radial-gradient(ellipse 700px 500px at 90% 85%,rgba(124,139,111,.16),transparent 60%),var(--espresso)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:10px;margin-bottom:20px;opacity:0;animation:rise .8s ease forwards .1s}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--gold)}
+h1{font-family:var(--f-display);font-weight:700;font-size:clamp(2.3rem,4.8vw,3.9rem);line-height:1.06;letter-spacing:-.01em;opacity:0;animation:rise .9s ease forwards .25s}
+h1 em{font-style:italic;color:var(--copper-b)}
+.sub{margin-top:20px;font-size:1.05rem;line-height:1.65;color:var(--latte);max-width:460px;opacity:0;animation:rise .9s ease forwards .4s}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.cta{margin-top:30px;display:flex;gap:14px;opacity:0;animation:rise .9s ease forwards .55s}
+.btn{font-weight:700;font-size:.92rem;padding:14px 26px;border-radius:100px;border:none;cursor:pointer;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s ease}
+.btn-p{background:var(--copper);color:var(--paper);box-shadow:0 8px 22px -8px rgba(193,104,58,.7)}
+.btn-p:hover{transform:translateY(-3px);background:var(--copper-b)}
+.btn-g{background:transparent;color:var(--cream);border:1px solid rgba(245,237,224,.3)}
+.btn-g:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.stage{position:relative;display:flex;justify-content:center}
+.printer{width:250px;height:32px;background:linear-gradient(180deg,#3a2a20,#241713);border-radius:8px;box-shadow:0 6px 16px rgba(0,0,0,.4);position:relative;z-index:3}
+.receipt{width:236px;background:var(--paper);color:var(--ink);margin-top:-4px;padding:24px 20px 22px;font-family:var(--f-mono);box-shadow:0 20px 40px -14px rgba(0,0,0,.55);clip-path:polygon(0 0,100% 0,100% 97%,96% 100%,92% 97%,88% 100%,84% 97%,80% 100%,76% 97%,72% 100%,68% 97%,64% 100%,60% 97%,56% 100%,52% 97%,48% 100%,44% 97%,40% 100%,36% 97%,32% 100%,28% 97%,24% 100%,20% 97%,16% 100%,12% 97%,8% 100%,4% 97%,0 100%);transform-origin:top center;animation:print 1.1s cubic-bezier(.25,.9,.3,1.1) forwards .7s;transform:scaleY(.05);opacity:0;position:relative;z-index:2}
+@keyframes print{0%{transform:scaleY(.05);opacity:0}12%{opacity:1}100%{transform:scaleY(1);opacity:1}}
+.receipt .rt{font-size:.68rem;letter-spacing:.1em;text-align:center;font-weight:700}
+.receipt .rs{font-size:.6rem;text-align:center;opacity:.6;margin-top:2px}
+.receipt hr{border:none;border-top:1px dashed rgba(43,27,20,.35);margin:12px 0}
+.receipt .row{display:flex;justify-content:space-between;font-size:.66rem;margin-bottom:6px}
+.receipt .row span:first-child{opacity:.55}
+.receipt .served{text-align:center;margin:14px 0 4px;padding:12px 6px;border:1.5px solid var(--copper);border-radius:6px;transform:rotate(-2deg)}
+.receipt .served .lbl{font-size:.58rem;letter-spacing:.12em;opacity:.6}
+.receipt .served .val{font-size:.95rem;font-weight:700;color:var(--copper);word-break:break-all;line-height:1.3;margin-top:4px}
+.receipt .bar{height:26px;margin-top:12px;background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 5px,var(--ink) 5px 7px,transparent 7px 11px)}
+.receipt .rf{text-align:center;font-size:.56rem;opacity:.5;margin-top:9px}
+.steam{position:absolute;z-index:1;opacity:.55;pointer-events:none;top:-28px;left:92px}
+.steam path{animation:steamrise 4.5s ease-in-out infinite}
+.steam path:nth-child(2){animation-delay:.6s}
+.steam path:nth-child(3){animation-delay:1.2s}
+@keyframes steamrise{0%{transform:translateY(6px);opacity:0}30%{opacity:.6}100%{transform:translateY(-36px);opacity:0}}
+.shead{max-width:600px;margin:0 auto 50px;text-align:center}
+.se{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--copper-b);margin-bottom:12px;display:flex;align-items:center;justify-content:center;gap:10px}
+.se::before,.se::after{content:'';width:22px;height:1px;background:var(--copper-b);opacity:.5}
+.st{font-family:var(--f-display);font-weight:700;font-size:clamp(1.7rem,3vw,2.4rem)}
+.sd{margin-top:14px;color:var(--latte);font-size:1rem;line-height:1.7}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.brewed{background:var(--espresso-deep);padding:100px 0}
+.counter{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:6px}
+.ccard{background:linear-gradient(165deg,rgba(245,237,224,.05),rgba(245,237,224,.02));border:1px solid rgba(245,237,224,.09);border-radius:16px;padding:28px 24px;transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .35s ease}
+.ccard:hover{transform:translateY(-6px);border-color:rgba(212,168,87,.4)}
+.ccard .iw{width:46px;height:46px;border-radius:12px;background:rgba(193,104,58,.16);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.ccard .iw svg{width:22px;height:22px}
+.ccard h3{font-family:var(--f-display);font-weight:700;font-size:1.12rem;margin-bottom:8px}
+.ccard p{font-size:.9rem;line-height:1.6;color:var(--latte)}
+.flow{margin-top:56px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0}
+.fn{background:rgba(245,237,224,.05);border:1px solid rgba(245,237,224,.14);border-radius:14px;padding:16px 22px;text-align:center;min-width:130px}
+.fn .fl{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.08em;color:var(--gold);text-transform:uppercase}
+.fn .fname{font-family:var(--f-display);font-weight:700;font-size:.98rem;margin-top:4px}
+.fn.act{border-color:var(--copper);box-shadow:0 0 0 3px rgba(193,104,58,.15)}
+.fa{width:52px;display:flex;align-items:center;justify-content:center;opacity:.5}
+.fa svg{width:38px;height:14px}
+.fb{display:flex;flex-direction:column;gap:12px}
+@media(max-width:760px){.flow{flex-direction:column}.fa{transform:rotate(90deg);margin:2px 0}}
+.menu{padding:100px 0;background:var(--espresso)}
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.mcard{background:var(--paper);color:var(--ink);border-radius:18px;overflow:hidden;box-shadow:0 16px 34px -16px rgba(0,0,0,.5);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.mcard:hover{transform:translateY(-8px) rotate(-.4deg)}
+.mcard .art{height:130px;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,var(--latte),#E8D5B8)}
+.mcard .art svg{width:70px;height:70px}
+.mcard .b{padding:20px 20px 22px}
+.mcard .mt{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.mcard h3{font-family:var(--f-display);font-weight:700;font-size:1.08rem}
+.mcard .price{font-family:var(--f-mono);font-weight:700;color:var(--copper);font-size:.9rem;white-space:nowrap}
+.mcard p{margin-top:6px;font-size:.84rem;line-height:1.5;opacity:.7}
+footer{background:var(--espresso-deep);padding:50px 0 30px;border-top:1px solid rgba(245,237,224,.08)}
+.ftop{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:26px;padding-bottom:34px}
+.fbrand .logo{margin-bottom:12px}
+.fbrand p{color:var(--latte);font-size:.88rem;max-width:270px;line-height:1.6}
+.status{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;padding-top:24px;border-top:1px solid rgba(245,237,224,.08);font-family:var(--f-mono);font-size:.72rem;color:var(--latte)}
+.schip{display:flex;align-items:center;gap:8px;background:rgba(212,168,87,.12);border:1px solid rgba(212,168,87,.3);padding:7px 14px;border-radius:20px;color:var(--gold);flex-wrap:wrap;max-width:100%}
+@media(max-width:920px){.hero .wrap{grid-template-columns:1fr}.counter,.mgrid{grid-template-columns:1fr 1fr}nav.links{display:none}.ftop{flex-direction:column}}
+@media(max-width:600px){.wrap{padding:0 20px}.counter,.mgrid{grid-template-columns:1fr}header.nav{padding:14px 18px}}
+</style>
+</head>
+<body>
+<header class="nav">
+<div class="logo"><svg viewBox="0 0 32 32" fill="none"><path d="M6 13h17a1 1 0 0 1 1 1c0 6-4.5 10-9.5 10S5 20 5 14a1 1 0 0 1 1-1Z" stroke="#D4A857" stroke-width="1.6"/><path d="M23 15h2.5a3 3 0 0 1 0 6H22" stroke="#D4A857" stroke-width="1.6" stroke-linecap="round"/></svg>Cloud Café</div>
+<div class="nav-badge"><span class="dot"></span><span id="nav-server">__INSTANCE_ID__</span></div>
+</header>
+
+<section class="hero">
+<div class="wrap">
+<div>
+<div class="eyebrow">Load-balanced &amp; freshly poured</div>
+<h1>Two baristas.<br>One perfect <em>cup</em>, every time.</h1>
+<p class="sub">Cloud Café runs behind an AWS Network Load Balancer, splitting every order between two identical serving stations. Whichever one takes your order, the coffee tastes exactly the same.</p>
+<div class="cta">
+<button class="btn btn-p" onclick="document.getElementById('brewed').scrollIntoView({behavior:'smooth'})">See how it's brewed</button>
+<button class="btn btn-g" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">View the menu</button>
+</div>
+</div>
+<div class="stage">
+<svg class="steam" width="50" height="60" viewBox="0 0 50 60" fill="none"><path d="M12 55c-6-8 6-12 0-22" stroke="#F5EDE0" stroke-width="2.4" stroke-linecap="round"/><path d="M25 55c-6-8 6-12 0-22" stroke="#F5EDE0" stroke-width="2.4" stroke-linecap="round"/><path d="M38 55c-6-8 6-12 0-22" stroke="#F5EDE0" stroke-width="2.4" stroke-linecap="round"/></svg>
+<div style="position:relative">
+<div class="printer"></div>
+<div class="receipt">
+<div class="rt">CLOUD CAFÉ</div>
+<div class="rs">ORDER TICKET · NLB DEMO</div>
+<hr>
+<div class="row"><span>Item</span><span>Flat White</span></div>
+<div class="row"><span>Order #</span><span id="order-no">2847</span></div>
+<div class="row"><span>Time</span><span id="order-time">--:--:--</span></div>
+<div class="served"><div class="lbl">SERVED BY</div><div class="val" id="ticket-server">__INSTANCE_ID__</div></div>
+<div class="bar"></div>
+<div class="rf">THANK YOU — COME AGAIN</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="brewed" id="brewed">
+<div class="wrap">
+<div class="shead reveal">
+<div class="se">How we're brewed</div>
+<h2 class="st">One counter, two baristas working in sync</h2>
+<p class="sd">An AWS Network Load Balancer sits at the front counter, greeting every customer and sending them to whichever barista is free. Neither line ever gets too long, and if one barista steps out, the other keeps the café running without a single missed order.</p>
+</div>
+<div class="counter">
+<div class="ccard reveal"><div class="iw"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12h16M4 12l4-4M4 12l4 4M20 12l-4-4M20 12l-4 4" stroke="#D4A857" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>The front counter</h3><p>Every request lands on the Network Load Balancer first. It doesn't make coffee itself — it just knows exactly who's free to help next.</p></div>
+<div class="ccard reveal"><div class="iw"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="8" height="16" rx="2" stroke="#D4A857" stroke-width="1.8"/><rect x="13" y="4" width="8" height="16" rx="2" stroke="#D4A857" stroke-width="1.8"/></svg></div><h3>Two identical stations</h3><p>Both instances run the same image, so your order tastes the same no matter which one takes it.</p></div>
+<div class="ccard reveal"><div class="iw"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v4M12 17v4M4.2 12H3M21 12h-1.2M6.3 6.3l1.4 1.4M16.3 16.3l1.4 1.4M17.7 6.3l-1.4 1.4M7.7 16.3l-1.4 1.4" stroke="#D4A857" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="#D4A857" stroke-width="1.8"/></svg></div><h3>Constant health checks</h3><p>The counter quietly checks in on both baristas every few seconds. A station that goes quiet is taken off the list until it's back.</p></div>
+</div>
+<div class="flow reveal">
+<div class="fn"><div class="fl">You</div><div class="fname">Browser</div></div>
+<div class="fa"><svg viewBox="0 0 44 16" fill="none"><path d="M0 8h40M32 2l8 6-8 6" stroke="#D9BFA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="fn act"><div class="fl">Front desk</div><div class="fname">Network LB</div></div>
+<div class="fa"><svg viewBox="0 0 44 16" fill="none"><path d="M0 8h40M32 2l8 6-8 6" stroke="#D9BFA0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+<div class="fb">
+<div class="fn" style="border-color:var(--copper)"><div class="fl">This order</div><div class="fname" id="flow-server">This instance</div></div>
+<div class="fn"><div class="fl">Standing by</div><div class="fname">Other instance</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="menu" id="menu">
+<div class="wrap">
+<div class="shead reveal">
+<div class="se">On the menu</div>
+<h2 class="st">The same cup, brewed at either station</h2>
+</div>
+<div class="mgrid">
+<div class="mcard reveal"><div class="art"><svg viewBox="0 0 84 84" fill="none"><path d="M20 34h38a3 3 0 0 1 3 3c0 15-10 26-22 26S17 52 17 37a3 3 0 0 1 3-3Z" fill="#2B1B14"/><path d="M61 38h6a8 8 0 0 1 0 16h-7" stroke="#2B1B14" stroke-width="3.4" stroke-linecap="round"/></svg></div><div class="b"><div class="mt"><h3>Flat White</h3><span class="price">$4.50</span></div><p>Double ristretto, velvet-steamed milk.</p></div></div>
+<div class="mcard reveal"><div class="art"><svg viewBox="0 0 84 84" fill="none"><rect x="26" y="24" width="32" height="40" rx="6" fill="#2B1B14"/><path d="M32 34h20M32 42h20M32 50h14" stroke="#D9BFA0" stroke-width="3" stroke-linecap="round"/></svg></div><div class="b"><div class="mt"><h3>Cold Brew</h3><span class="price">$4.90</span></div><p>Steeped 18 hours, served over ice.</p></div></div>
+<div class="mcard reveal"><div class="art"><svg viewBox="0 0 84 84" fill="none"><path d="M22 30h34a3 3 0 0 1 3 3c0 14-8.5 24-20 24s-20-10-20-24a3 3 0 0 1 3-3Z" fill="#2B1B14"/><circle cx="39" cy="60" r="3" fill="#C1683A"/></svg></div><div class="b"><div class="mt"><h3>Matcha Latte</h3><span class="price">$5.20</span></div><p>Ceremonial-grade matcha, hand whisked.</p></div></div>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="wrap">
+<div class="ftop">
+<div class="fbrand">
+<div class="logo"><svg viewBox="0 0 32 32" fill="none"><path d="M6 13h17a1 1 0 0 1 1 1c0 6-4.5 10-9.5 10S5 20 5 14a1 1 0 0 1 1-1Z" stroke="#D4A857" stroke-width="1.6"/><path d="M23 15h2.5a3 3 0 0 1 0 6H22" stroke="#D4A857" stroke-width="1.6" stroke-linecap="round"/></svg>Cloud Café</div>
+<p>A small demo café showing how an AWS Network Load Balancer keeps two servers pouring in perfect sync.</p>
+</div>
+</div>
+<div class="status">
+<div>© <span id="year"></span> Cloud Café — brewed behind an NLB</div>
+<div class="schip"><span class="dot"></span><span id="footer-server">__INSTANCE_ID__</span> · <span id="footer-time">--:--:--</span></div>
+</div>
+</div>
+</footer>
+
+<script>
+const SERVER_NAME="__INSTANCE_ID__";
+document.querySelectorAll('#nav-server,#ticket-server,#footer-server').forEach(el=>el.textContent=SERVER_NAME);
+function pad(n){return n.toString().padStart(2,'0')}
+function tick(){var d=new Date(),t=pad(d.getHours())+':'+pad(d.getMinutes())+':'+pad(d.getSeconds());var a=document.getElementById('order-time'),b=document.getElementById('footer-time');if(a)a.textContent=t;if(b)b.textContent=t}
+tick();setInterval(tick,1000);
+document.getElementById('order-no').textContent=(1000+Math.floor(Math.random()*8999)).toString();
+document.getElementById('year').textContent=new Date().getFullYear();
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+</script>
+</body>
+</html>
