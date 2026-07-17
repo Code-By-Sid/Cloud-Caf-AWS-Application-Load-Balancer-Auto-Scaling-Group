@@ -1,4 +1,4 @@
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/0ccd103d-2408-423f-8a33-9d2a066a810e" /># ☕ Cloud Café – High Availability Web Application on AWS
+# ☕ Cloud Café – High Availability Web Application on AWS
 
 ## 📌 Project Overview
 
