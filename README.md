@@ -262,8 +262,21 @@ CloudCafe/
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8f9dcdbb-dc6a-4b38-8f0b-1a5b16ee5c28" />
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e266d444-37e0-432a-b7dc-6f64dfc5c7fa" />
 
+---
 
 ---
+
+# 📸 AWS DashBoard
+
+<img width="1920" height="1080" alt="ec2-running" src="https://github.com/user-attachments/assets/e24a6ccc-0622-4519-9069-c747986af3fb" />
+<img width="1920" height="1080" alt="autoscaling-group" src="https://github.com/user-attachments/assets/6c8d0c01-8999-4e80-bd1c-ad43b7b4f677" />
+<img width="1920" height="1080" alt="alb" src="https://github.com/user-attachments/assets/da86599b-bbf7-4945-88a5-c3e0a4d03065" />
+<img width="1920" height="1080" alt="target-group" src="https://github.com/user-attachments/assets/e235e52d-d285-47c9-8e9f-7bfb3e1a63f1" />
+<img width="1920" height="1080" alt="load-balancing" src="https://github.com/user-attachments/assets/c668dc0b-6c20-4e36-b387-9d0c066415a6" />
+
+
+---
+
 
 # 📚 Learning Outcomes
 
