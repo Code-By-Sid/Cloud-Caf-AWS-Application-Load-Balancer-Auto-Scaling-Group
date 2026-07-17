@@ -246,9 +246,7 @@ CloudCafe/
 │   ├── alb.png
 │   ├── target-group.png
 │   ├── autoscaling-group.png
-│   ├── health-check.png
 │   └── load-balancing.png
-└── architecture.png
 ```
 
 ---
