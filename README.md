@@ -1,6 +1,6 @@
 # ☕ Cloud Café – High Availability Web Application on AWS
 
-CloudCafe-ALB-2110120784.ap-south-1.elb.amazonaws.com
+http://cloudcafe-alb-2110120784.ap-south-1.elb.amazonaws.com/
 
 ## 📌 Project Overview
 
