@@ -1,5 +1,7 @@
 # ☕ Cloud Café – High Availability Web Application on AWS
 
+CloudCafe-ALB-2110120784.ap-south-1.elb.amazonaws.com
+
 ## 📌 Project Overview
 
 Cloud Café is a hands-on AWS project that demonstrates how to build a **highly available**, **fault-tolerant**, and **scalable** web application using **Amazon EC2**, **Application Load Balancer (ALB)**, and **Auto Scaling Group (ASG)**.
